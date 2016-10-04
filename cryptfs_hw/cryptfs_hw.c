@@ -28,7 +28,6 @@
 
 #include <cryptfs_hw.h>
 #include <stdlib.h>
-#include <string.h>
 #include <sys/limits.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -204,10 +203,13 @@ unsigned int is_hw_disk_encryption(const char* encryption_mode)
     return ret;
 }
 
-int clear_hw_device_encryption_key(void)
+unsigned int wipe_hw_device_encryption_key(const char* enc_mode)
 {
-    if (load_qseecom_library())
-        return qseecom_wipe_key(map_usage(QSEECOM_DISK_ENCRYPTION));
+    if (!enc_mode)
+        return -1;
+
+    if (is_hw_disk_encryption(enc_mode) && load_qseecom_library())
+        return qseecom_wipe_key(QSEECOM_DISK_ENCRYPTION);
 
     return 0;
 }
