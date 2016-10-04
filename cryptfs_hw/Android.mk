@@ -10,10 +10,7 @@ sourceFiles := \
 commonSharedLibraries := \
                         libcutils \
                         libutils \
-                        libdl \
-                        libhardware
-commonIncludes := \
-                  hardware/libhardware/include/hardware/
+                        libdl
 
 LOCAL_C_INCLUDES := $(commonIncludes)
 LOCAL_SRC_FILES := $(sourceFiles)

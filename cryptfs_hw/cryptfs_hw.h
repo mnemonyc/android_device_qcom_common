@@ -40,7 +40,6 @@ int clear_hw_device_encryption_key(void);
 unsigned int is_hw_disk_encryption(const char*);
 unsigned int is_hw_fde_enabled(void);
 int is_ice_enabled(void);
-int should_use_keymaster();
 
 #ifdef __cplusplus
 }
